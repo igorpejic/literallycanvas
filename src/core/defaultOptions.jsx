@@ -24,7 +24,9 @@ module.exports = {
     require('../tools/Ellipse'),
     require('../tools/Text'),
     require('../tools/Polygon'),
+    require('../tools/PolygonPointsMover'),
     require('../tools/Pan'),
-    require('../tools/Eyedropper')
+    require('../tools/Eyedropper'),
+    require('../tools/NothingTool'),
   ]
 }

@@ -169,6 +169,18 @@ _drawRawLinePath = (ctx, points, close=false, lineCap='round') ->
   if close
     ctx.closePath()
 
+_drawPolygonPoints = (ctx, points) ->
+  return unless points.length
+
+  ctx.strokeStyle = points[0].color
+  ctx.lineWidth = points[0].size
+
+  for point in points
+      ctx.beginPath()
+      ctx.arc(point.x, point.y, 5, 0, 2 * Math.PI, false);
+      ctx.fill()
+      ctx.stroke()
+
 
 drawLinePath = (ctx, shape) ->
   _drawRawLinePath(ctx, shape.smoothedPoints)
@@ -225,6 +237,7 @@ defineCanvasRenderer 'Polygon', (ctx, shape) ->
   _drawRawLinePath(ctx, shape.points, shape.isClosed, 'butt')
   ctx.fill()
   ctx.stroke()
+  _drawPolygonPoints(ctx, shape.points)
 
 
 module.exports = {
